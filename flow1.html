@@ -1,0 +1,571 @@
+﻿<html xmlns:v>
+<head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title>xjwGraphDemo</title>
+	
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link href="css/flowPath.css" type="text/css" rel="stylesheet" />
+
+	<STYLE>
+		v\:*{behavior:url(#default#VML);}
+	</STYLE>
+
+</head>
+
+<body class="easyui-layout bodySelectNone" id="body" onselectstart="return false">
+	
+	<div id="title" region="north" split="true" border="false" title="工具栏" class="titleTool">
+		<div id="message" class="message"></div>	
+		<img alt="合并" title="合并" src="images/1.png" onclick="graphUtils.toMerge()" class="buttonStyle" />
+		<img alt="拆分" title="拆分" src="images/2.png" onclick="graphUtils.toSplit()" class="buttonStyle"/>
+		<img alt="置顶"	title="置顶" src="images/4.png" onclick="graphUtils.toTop()" class="buttonStyle"/>
+		<img alt="置底"	title="置底" src="images/3.png" onclick="graphUtils.toBottom()" class="buttonStyle"/>
+		<img alt="预览"	title="预览" src="images/zoom.png" onclick="graphUtils.printView()" class="buttonStyle"/>
+		<img alt="打印" title="打印" src="images/printer.png"  class="buttonStyle"/>
+		<img alt="撤销"	title="撤销" src="images/back.png" onclick="graphUtils.undo();" class="buttonStyle"/>
+		<img alt="重做"	title="重做" src="images/next.png" onclick="graphUtils.redo();" class="buttonStyle"/>
+		<img alt="保存"	title="保存" src="images/save.png" onclick="graphUtils.saveXml();" class="buttonStyle"/>
+		<img alt="加载"	title="加载" src="images/download_page.png" onclick="graphUtils.loadXml();" class="buttonStyle"/>
+		<img alt="清空"	title="清空" src="images/trash.png" onclick="graphUtils.clearHtml();" class="buttonStyle"/>
+		<img alt="复制"	title="复制" src="images/copy.png" onclick="graphUtils.copyNode();" class="buttonStyle"/>
+		<img alt="删除"	title="删除" src="images/delete.png" onclick="graphUtils.removeNode();" class="buttonStyle"/>
+		<img alt="左对齐"	title="左对齐" src="images/toLeft.png" onclick="graphUtils.alignLeft();" class="buttonStyle"/>
+		<img alt="垂直居中"	title="垂直居中" src="images/toMiddleWidth.png" onclick="graphUtils.verticalCenter();" class="buttonStyle"/>
+		<img alt="右对齐"	title="右对齐" src="images/toRight.png" onclick="graphUtils.alignRight();" class="buttonStyle"/>
+		<img alt="顶对齐"	title="顶对齐" src="images/toTop.png" onclick="graphUtils.alignTop();" class="buttonStyle"/>
+		<img alt="水平居中"	title="水平居中" src="images/toMiddleHeight.png" onclick="graphUtils.horizontalCenter();" class="buttonStyle"/>
+		<img alt="底对齐"	title="底对齐" src="images/toBottom.png" onclick="graphUtils.bottomAlignment();" class="buttonStyle"/>
+		
+	</div>
+	
+	<div id="leftContent" region="west" split="true" title="图元区" class="leftContent">
+		
+		<div class="easyui-accordion overflowHidden" fit="true" border="false">
+			
+				<div title="基本图形" style="overflow:hidden;background-color:#c7dbfc;">
+					
+					<div id="baseLine2" style="position:absolute;left:10px;top:30px !important;top:10px">
+		 				<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/line3.png" class="nodeStyle"/>
+					</div>
+			
+					<div id="baseLine3" style="position:absolute;left:50px;top:30px !important;top:10px">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/line2.png" class="nodeStyle"/>
+					</div>
+			
+					<div id="baseLine1" style="position:absolute;left:90px;top:30px !important;top:10px">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/line1.png" class="nodeStyle"/>
+					</div>
+			
+					<div id="baseMode4" divType="mode" style="position:absolute;left:10px;top:70px !important;top:50px">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/baseMode2.png" class="nodeStyle"/>
+					</div>
+			
+					<div id="baseMode5" divType="mode" style="position:absolute;left:50px;top:70px !important;top:50px">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/baseMode3.png" class="nodeStyle"/>
+					</div>
+			
+					<div id="baseMode6" divType="mode" style="position:absolute;left:90px;top:70px !important;top:50px">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/baseMode4.png" class="nodeStyle"/>
+					</div>
+					
+					<div id="baseMode3" divType="mode" style="position:absolute;left:50px;top:106px !important;top:86px">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/baseMode1.png" class="nodeStyle"/>
+					</div>
+			
+					<div id="baseMode7" divType="mode" style="position:absolute;left:10px;top:106px !important;top:86px">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/baseMode5.png" class="nodeStyle"/>
+					</div>
+			
+					<div id="baseMode8" divType="mode" style="position:absolute;left:90px;top:106px !important;top:86px">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/baseMode6.png" class="nodeStyle"/>
+					</div>
+			
+					<div id="baseMode9" divType="mode" style="position:absolute;left:10px;top:140px !important;top:120px">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/baseMode7.png" class="nodeStyle"/>
+					</div>
+			
+					<div id="baseMode10" divType="mode" style="position:absolute;left:50px;top:140px !important;top:120px">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/baseMode8.png" class="nodeStyle"/>
+					</div>
+			
+					<div id="baseMode11" divType="mode" style="position:absolute;left:90px;top:140px !important;top:120px">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/baseMode9.png" class="nodeStyle"/>
+					</div>
+			
+					<div id="baseMode12" divType="mode" style="position:absolute;left:10px;top:175px !important;top:155px">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/baseMode10.png" class="nodeStyle"/>
+					</div>
+			
+					<div id="baseMode13" divType="mode" style="position:absolute;left:50px;top:175px !important;top:155px">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/baseMode11.png" class="nodeStyle"/>
+					</div>
+			
+					<div id="baseMode14" divType="mode" style="position:absolute;left:90px;top:175px !important;top:155px">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/baseMode12.png" class="nodeStyle"/>
+					</div>
+			
+					<div id="baseMode15" divType="mode" style="position:absolute;left:10px;top:210px !important;top:190px">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/baseMode13.png" class="nodeStyle"/>
+					</div>
+			
+					<div id="baseMode16" divType="mode" style="position:absolute;left:90px;top:210px !important;top:190px">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/baseMode14.png" class="nodeStyle"/>
+					</div>
+			
+					<div id="baseMode17" divType="mode" style="position:absolute;left:50px;top:210px !important;top:190px">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/baseMode15.png" class="nodeStyle"/>
+					</div>
+			
+				</div>
+				
+				<div title="流程图形" class="flowImag">
+					
+					<div id="baseMode36" divType="mode" style="float:left;margin-top:10px;margin-left:5px;margin-right:10px;">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/liucheng1.png" class="nodeStyle"/>
+					</div>
+					
+					<div id="baseMode37" divType="mode" style="float:left;margin-top:10px;margin-right:10px;">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/liucheng2.png" class="nodeStyle"/>
+					</div>
+					
+					<div id="baseMode38" divType="mode" style="float:left;margin-top:10px;">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/liucheng3.png" class="nodeStyle"/>
+					</div>
+					
+					
+					<div id="baseMode39" divType="mode" style="float:left;margin-top:10px;margin-left:5px;margin-right:10px;">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/liucheng4.png" class="nodeStyle"/>
+					</div>
+					
+					<div id="baseMode40" divType="mode" style="float:left;margin-top:10px;margin-right:10px;">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/liucheng5.png" class="nodeStyle"/>
+					</div>
+					
+					<div id="baseMode41" divType="mode" style="float:left;margin-top:10px">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/liucheng6.png" class="nodeStyle"/>
+					</div>
+					
+				</div>
+				
+				<div title="财经图形" class="flowImag">
+					
+					<div id="baseMode18" divType="mode" style="float:left;margin-top:10px;margin-left:5px;margin-right:10px;">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/jinrong7.png" class="nodeStyle"/>
+					</div>
+					
+					<div id="baseMode19" divType="mode" style="float:left;margin-top:10px;margin-right:10px;">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/jinrong8.png" class="nodeStyle"/>
+					</div>
+					
+					<div id="baseMode20" divType="mode" style="float:left;margin-top:10px;">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/jinrong9.png" class="nodeStyle"/>
+					</div>
+					
+					<div id="baseMode21" divType="mode" style="float:left;margin-top:10px;margin-left:5px;margin-right:10px;">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/jinrong10.png" class="nodeStyle"/>
+					</div>
+					
+					<div id="baseMode22" divType="mode" style="float:left;margin-top:10px;margin-right:10px;">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/jinrong5.png" class="nodeStyle"/>
+					</div>
+					
+					<div id="baseMode23" divType="mode" style="float:left;margin-top:10px;">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/jinrong6.png" class="nodeStyle"/>
+					</div>
+					
+				</div>
+				<div title="数据图形" class="flowImag">
+					
+					<div id="baseMode24" divType="mode" style="float:left;margin-top:10px;margin-left:5px;margin-right:10px;">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/shuju1.png" class="nodeStyle"/>
+					</div>
+					
+					<div id="baseMode25" divType="mode" style="float:left;margin-top:10px;margin-right:10px;">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/shuju2.png" class="nodeStyle"/>
+					</div>
+					
+					<div id="baseMode26" divType="mode" style="float:left;margin-top:10px;">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/shuju3.png" class="nodeStyle"/>
+					</div>
+					
+					
+					<div id="baseMode27" divType="mode" style="float:left;margin-top:10px;margin-left:5px;margin-right:10px;">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/shuju4.png" class="nodeStyle"/>
+					</div>
+					
+					<div id="baseMode28" divType="mode" style="float:left;margin-top:10px;margin-right:10px;">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/shuju5.png" class="nodeStyle"/>
+					</div>
+					
+					<div id="baseMode29" divType="mode" style="float:left;margin-top:10px">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/shuju6.png" class="nodeStyle"/>
+					</div>
+
+					
+				</div>
+				
+				<div title="电信图形" class="flowImag">
+					
+					<div id="baseMode30" divType="mode" style="float:left;margin-top:10px;margin-left:5px;margin-right:10px;">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/dianxin1.png" class="nodeStyle"/>
+					</div>
+					
+					<div id="baseMode31" divType="mode" style="float:left;margin-top:10px;margin-right:10px;">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/dianxin2.png" class="nodeStyle"/>
+					</div>
+					
+					<div id="baseMode32" divType="mode" style="float:left;margin-top:10px;">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/dianxin3.png" class="nodeStyle"/>
+					</div>
+					
+					<div id="baseMode33" divType="mode" style="float:left;margin-top:10px;margin-left:5px;margin-right:10px;">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/dianxin4.png" class="nodeStyle"/>
+					</div>
+					
+					<div id="baseMode34" divType="mode" style="float:left;margin-top:10px;margin-right:10px;">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/dianxin5.png" class="nodeStyle"/>
+					</div>
+					
+					<div id="baseMode35" divType="mode" style="float:left;margin-top:10px">
+						<div class="title">&nbsp;</div>
+						<img id="backGroundImg" src="images/dianxin6.png" class="nodeStyle"/>
+					</div>
+					
+				</div>
+				
+			</div>
+			
+	</div>
+	
+	<div region="center" title="绘图区" id="contextBody" class="mapContext" >
+			
+			<!-- Line右键菜单 -->
+			<div id="lineRightMenu" class="modeRight">
+				<div class="modeRightTop"></div>
+				<div class="modeRightDel" onmousemove="this.style.backgroundColor='#c5e7f6'" onclick="graphUtils.removeNode();" onmouseout="this.style.backgroundColor=''"><span class="menuSpan">删 除</span></div>
+				<div class="modeRightPro" onmousemove="this.style.backgroundColor='#c5e7f6'" onclick="graphUtils.showLinePro();" onmouseout="this.style.backgroundColor=''"><span class="menuSpan">属 性</span></div>
+				<div class="modeRightButtom"></div>
+			</div>
+					
+			<!-- Mode右键菜单 -->
+			<div id="rightMenu" class="modeRight">
+				<div class="modeRightTop"></div>
+				<div class="modeRightCopy" onmousemove="this.style.backgroundColor='#c5e7f6'" onclick="graphUtils.copyNode();" onmouseout="this.style.backgroundColor=''"><span class="menuSpan">复 制</span></div>
+				<div class="modeRightDel" onmousemove="this.style.backgroundColor='#c5e7f6'" onclick="graphUtils.removeNode();" onmouseout="this.style.backgroundColor=''"><span class="menuSpan">删 除</span></div>
+				<div class="modeRightPro" onmousemove="this.style.backgroundColor='#c5e7f6'" onclick="graphUtils.showModePro();" onmouseout="this.style.backgroundColor=''"><span class="menuSpan">属 性</span></div>
+				<div class="modeRightButtom"></div>
+			</div>
+			
+			<!-- PathBody右键菜单 -->
+			<div id="pathBodyRightMenu" class="modeRight">
+				<div class="modeRightTop"></div>
+				<div class="modeRightPixel" id="isPixel" onclick="global.baseTool.changStyle(this);" onmousemove="this.style.backgroundColor='#c5e7f6'" onmouseout="this.style.backgroundColor=''"><span class="menuSpan">Pixel</span></div>
+				<div class="modeRightLeft" onclick="graphUtils.alignLeft();" onmousemove="this.style.backgroundColor='#c5e7f6'" onmouseout="this.style.backgroundColor=''"><span class="menuSpan">左对齐</span></div>
+				<div class="modeRightCenter" onclick="graphUtils.verticalCenter();" onmousemove="this.style.backgroundColor='#c5e7f6'" onmouseout="this.style.backgroundColor=''"><span class="menuSpan">垂直居中</span></div>
+				<div class="modeRightRight" onclick="graphUtils.alignRight();" onmousemove="this.style.backgroundColor='#c5e7f6'" onmouseout="this.style.backgroundColor=''"><span class="menuSpan">右对齐</span></div>
+				<div class="modeRightHead" onclick="graphUtils.alignTop();" onmousemove="this.style.backgroundColor='#c5e7f6'" onmouseout="this.style.backgroundColor=''"><span class="menuSpan">顶部对齐</span></div>
+				<div class="modeRightMiddle" onclick="graphUtils.horizontalCenter();" onmousemove="this.style.backgroundColor='#c5e7f6'" onmouseout="this.style.backgroundColor=''"><span class="menuSpan">水平居中</span></div>
+				<div class="modeRightFoot" onclick="graphUtils.bottomAlignment();" onmousemove="this.style.backgroundColor='#c5e7f6'" onmouseout="this.style.backgroundColor=''"><span class="menuSpan">底端对齐</span></div>
+				<div class="modeRightButtom"></div>
+			</div>
+			
+		 	<div id="topCross"></div>
+      <div id="leftCross"></div>
+	
+	</div>
+
+	<div region="east" split="true" title="历史操作" class="history">
+		<div id="historyMessage" class="historyMessage"></div>
+	</div>
+	
+	<div region="south"  split="true" title="辅助区" class="auxiliaryArea" >
+		<!-- 小地图 -->	
+		<div id="smallMap"></div> 
+		
+		<div id="mainControl">
+			
+			<div id="tab" class="control">
+	
+				<h3 id="h1" class="hclass" onClick="hOnMouseOver(this, '1')">
+					&nbsp;<img src="images/img1.png" style="vertical-align:middle;" />&nbsp;&nbsp;模型名称
+				</h3>
+					<div id="tab1" class="htabup">
+						
+						<table cellpadding="0" cellspacing="0">
+							<tr>
+									<td style="text-align:center;height:25px;">
+										标题
+									</td>									
+									<td colspan="7">
+										<input type="text" id="inputTitle" class="inputComm" style="width:300px;"/>
+									</td>
+							</tr>
+							
+
+								<tr>
+									<td style="width:70px;text-align:center;">
+										内容
+									</td>									
+									<td colspan="7">
+										<textarea rows="3" id="modeContent" class="contextArea" ></textarea>
+									</td>
+								</tr>
+								
+						</table>	
+
+					</div>
+				
+			 <h3 id="h2" class="hclass" onClick="hOnMouseOver(this, '2')">
+			 	&nbsp;<img src="images/img2.png" style="vertical-align:middle;" />&nbsp;&nbsp;模型属性
+			 	</h3>
+					<div id="tab2" class="htab">
+						<table cellpadding="0" cellspacing="0">
+							<tr>
+									<td style="width:70px;height:25px;text-align:center;">
+										宽
+									</td>									
+									<td>
+										<input type="text" id="inputWidth" class="inputComm" style="width:50px;"/>
+									</td>
+									<td style="width:70px;text-align:center;">
+										高
+									</td>									
+									<td>
+										<input type="text" id="inputHeight" class="inputComm" style="width:50px;" />
+									</td>
+									
+							</tr>
+							<tr>
+									<td style="text-align:center;">
+										上边距
+									</td>									
+									<td>
+										<input type="text" id="inputTop" class="inputComm" style="width:50px;" />
+									</td>
+									<td style="text-align:center;">
+										左边距
+									</td>									
+									<td>
+										<input type="text" id="inputLeft" class="inputComm" style="width:50px;" />
+									</td>
+							</tr>
+								
+						</table>	
+					</div>
+					<h3 id="h3" class="hclass" onClick="hOnMouseOver(this, '3')">
+					&nbsp;<img src="images/img3.png" style="vertical-align:middle;" />&nbsp;&nbsp;模型背景</h3>
+					<div id="tab3" class="htab">
+							
+						<table cellpadding="0" cellspacing="0">
+							
+								<tr>
+									
+									<td style="width:70px;text-align:center;">
+										背景图
+									</td>
+									
+									<td colspan="6">
+										<input type="text" id="inputImgSrc" class="inputComm" style="width:500px;" />
+									</td>
+									
+								</tr>
+
+						</table>
+							
+					</div>
+
+			</div>
+			
+		</div>
+		<div id="show" class="show">
+			
+			<div id="nullCount" class="showItem"></div>
+			<div id="lineCount" class="showItem"></div>
+			<div id="modeCount" class="showItem"></div>
+			<div id="contextCount" class="showItem"></div>
+			
+		</div>
+	
+	</div>
+	
+	<!-- 移动时的图象 -->
+	<div id="moveBaseMode" class="moveBaseMode">
+		<img id="moveBaseModeImg"  src="images/Favourite.png" class="nodeStyle"/>
+	</div>
+	
+	<div id="prop" style="visibility: hidden;">
+				Dialog Content.  
+	</div>
+	
+	</body>
+	
+	<script src="js/jquery-1.6.min.js" type="text/javascript"></script>
+	<script src="js/jquery.easyui.min.js" type="text/javascript"></script>
+	<script src="js/BaseTool.js" type="text/javascript" language="javascript"></script>
+	<script src="js/LineTool.js" type="text/javascript" language="javascript"></script>
+	<script src="js/ModeTool.js" type="text/javascript" language="javascript"></script>
+	<script src="js/Map.js" type="text/javascript" language="javascript"></script>
+	<script src="js/Entity.js" type="text/javascript" language="javascript"></script>
+	<script src="js/KeyEvent.js" type="text/javascript" language="javascript"></script>
+	<script src="js/SmallMapTool.js" type="text/javascript" language="javascript"></script>
+	<script src="js/ControlTool.js" type="text/javascript" language="javascript"></script>
+	<script src="js/Global.js" type="text/javascript" language="javascript"></script>
+	<script src="js/BeanXml.js" type="text/javascript" language="javascript"></script>
+	<script src="js/ClientTool.js" type="text/javascript" language="javascript"></script>
+	<script src="js/Utils.js" type="text/javascript" language="javascript"></script>
+	
+	<script>
+		
+			var mainControl = $id("mainControl");
+			mainControl.style.width = (document.body.offsetWidth - 412) + "px";
+			
+  		var bgImg = "url(images/bg.gif)";
+  		var backColor = "#e0ecff";
+  		
+  		
+  		function hOnMouseOver(tagObj, index) {
+				
+				var h1 = $id("h1");
+				var h2 = $id("h2");
+				var h3 = $id("h3");
+				
+				var tab1 = $id("tab1");
+				var tab2 = $id("tab2");
+				var tab3 = $id("tab3");
+				
+				var setHClass = function (obj, colorValue, indexValue) {
+				
+					obj.style.background = colorValue;
+					obj.style.zIndex = indexValue;
+					
+				}
+				
+				var setTagClass = function (obj, className) {
+					
+					obj.setAttribute("class", className);
+					obj.setAttribute("className", className);
+
+				}
+				
+				setHClass(h1, bgImg, "1");
+				setHClass(h2, bgImg, "1");
+				setHClass(h3, bgImg, "1");
+				
+				setTagClass(tab1, "htab");
+				setTagClass(tab2, "htab");
+				setTagClass(tab3, "htab");
+				
+				setHClass(tagObj, backColor,"3");
+				setTagClass($id("tab" + index), "htabup");
+				
+			}
+  		
+			jQuery(document).ready(function () {
+				
+				$id("h1").style.background = "#e0ecff";
+				$id("h1").style.zIndex = "3";
+				
+				var global = com.xjwgraph.Global;
+				
+				graphUtils = com.xjwgraph.Utils.create({
+					
+					contextBody : 'contextBody',
+					width : 1600,
+					height : 1000,
+					smallMap : 'smallMap',
+					mainControl : 'mainControl',
+					historyMessage : 'historyMessage',
+					prop : 'prop'
+				
+				});
+				
+				graphUtils.nodeDrag($id("baseLine1"), true, 1);
+				graphUtils.nodeDrag($id("baseLine2"), true, 2);
+				graphUtils.nodeDrag($id("baseLine3"), true, 3);
+
+				var modes = jQuery("[divType='mode']");
+				var modeLength = modes.length;
+				
+				for (var i = 0; i < modeLength; i++) {
+					graphUtils.nodeDrag(modes[i]);
+				}
+				
+				document.body.onclick = function () {
+					
+					if (!stopEvent) {
+						global.modeTool.clear();
+					} 
+					
+				}
+				
+				function countModule() {
+				
+					stopEvent = false;
+					
+					var lineCount = global.lineMap.size();
+					var modeCount = global.modeMap.size();
+					var contextCount = global.baseTool.contextMap.size();
+					
+					$id("lineCount").innerHTML = "线总数:" + lineCount;
+					$id("modeCount").innerHTML = "模型数:" + modeCount;
+				
+					$id("contextCount").innerHTML = "区域数:" + contextCount;
+					
+				}
+				
+				countModule();
+				
+				document.onclick = countModule;
+				document.onkeydown = KeyDown;
+				
+				var xmlText = '<?xml version="1.0"?><modes><mode class="module" contentEditable="inherit" attr_prop_attri1="2" attr_prop_attri2="3" attr_prop_attri3="4" id="122" title="完成" backImgSrc="file:///C:/Documents%20and%20Settings/xiaojiwei/桌面/strawberry/strawberry%20v0.1.9%20src%20Beta/demo/images/end.png" top="817" left="935" zIndex="60" width="104" height="43"/><mode class="module" contentEditable="inherit" attr_prop_attri1="2" attr_prop_attri2="3" attr_prop_attri3="4" id="120" title="会计分录" backImgSrc="file:///C:/Documents%20and%20Settings/xiaojiwei/桌面/strawberry/strawberry%20v0.1.9%20src%20Beta/demo/images/business.png" top="810" left="648" zIndex="60" width="105" height="56"/><mode class="module" contentEditable="inherit" attr_prop_attri1="2" attr_prop_attri2="3" attr_prop_attri3="4" id="112" title="进帐单" backImgSrc="file:///C:/Documents%20and%20Settings/xiaojiwei/桌面/strawberry/strawberry%20v0.1.9%20src%20Beta/demo/images/handBus.png" top="810" left="386" zIndex="60" width="105" height="56"/><mode class="module" contentEditable="inherit" attr_prop_attri1="2" attr_prop_attri2="3" attr_prop_attri3="4" id="108" title="进帐单" backImgSrc="file:///C:/Documents%20and%20Settings/xiaojiwei/桌面/strawberry/strawberry%20v0.1.9%20src%20Beta/demo/images/switch.png" top="685" left="648" zIndex="60" width="105" height="56"/><mode class="module" contentEditable="inherit" attr_prop_attri1="2" attr_prop_attri2="3" attr_prop_attri3="4" id="102" title="进帐单" backImgSrc="file:///C:/Documents%20and%20Settings/xiaojiwei/桌面/strawberry/strawberry%20v0.1.9%20src%20Beta/demo/images/business.png" top="544" left="472" zIndex="60" width="105" height="56"/><mode class="module" contentEditable="inherit" attr_prop_attri1="2" attr_prop_attri2="3" attr_prop_attri3="4" id="100" title="进帐单" backImgSrc="file:///C:/Documents%20and%20Settings/xiaojiwei/桌面/strawberry/strawberry%20v0.1.9%20src%20Beta/demo/images/business.png" top="534" left="832" zIndex="60" width="105" height="56"/><mode class="module" contentEditable="inherit" attr_prop_attri1="2" attr_prop_attri2="3" attr_prop_attri3="4" id="96" title="进帐单" backImgSrc="file:///C:/Documents%20and%20Settings/xiaojiwei/桌面/strawberry/strawberry%20v0.1.9%20src%20Beta/demo/images/switch.png" top="449" left="648" zIndex="60" width="105" height="56"/><mode class="module" contentEditable="inherit" attr_prop_attri1="2" attr_prop_attri2="3" attr_prop_attri3="4" id="84" title="进帐单" backImgSrc="file:///C:/Documents%20and%20Settings/xiaojiwei/桌面/strawberry/strawberry%20v0.1.9%20src%20Beta/demo/images/business.png" top="330" left="648" zIndex="60" width="105" height="56"/><mode class="module" contentEditable="inherit" attr_prop_attri1="2" attr_prop_attri2="3" attr_prop_attri3="4" id="60" title="开始" backImgSrc="file:///C:/Documents%20and%20Settings/xiaojiwei/桌面/strawberry/strawberry%20v0.1.9%20src%20Beta/demo/images/start.png" top="205" left="648" zIndex="60" width="105" height="56"/><line strokeweight="1.35" strokecolor="black" d="M 648 478 L 648 477,525 477,525 544" brokenType="2" contentEditable="inherit" id="line37" style="WIDTH: 100px; CURSOR: pointer; POSITION: absolute; HEIGHT: 100px; fill: none; stroke: black; stroke-width: 1.7999999999999998;fill: none; stroke: black; stroke-width: 1.7999999999999998" marker-end="url(#arrow)" wBaseMode="module102" wIndex="2" xBaseMode="module96" xIndex="4" attr_prop_attri1="2" attr_prop_attri2="3" attr_prop_attri3="4" attr_prop_attri4="5"/><line strokeweight="1.35" strokecolor="black" d="m701 263 L 701 330 z" brokenType="1" contentEditable="inherit" id="line34" style="WIDTH: 100px; CURSOR: pointer; POSITION: absolute; HEIGHT: 100px; fill: none; stroke: black; stroke-width: 1.7999999999999998;fill: none; stroke: black; stroke-width: 1.7999999999999998" marker-end="url(#arrow)" wBaseMode="module84" wIndex="2" xBaseMode="module60" xIndex="7" attr_prop_attri1="2" attr_prop_attri2="3" attr_prop_attri3="4" attr_prop_attri4="5"/><line strokeweight="1.35" strokecolor="black" d="m493 839 L 648 839 z" brokenType="1" contentEditable="inherit" id="line32" style="WIDTH: 100px; CURSOR: pointer; POSITION: absolute; HEIGHT: 100px; fill: none; stroke: black; stroke-width: 1.7999999999999998;fill: none; stroke: black; stroke-width: 1.7999999999999998" marker-end="url(#arrow)" wBaseMode="module120" wIndex="4" xBaseMode="module112" xIndex="5" attr_prop_attri1="2" attr_prop_attri2="3" attr_prop_attri3="4" attr_prop_attri4="5"/><line strokeweight="1.35" strokecolor="black" d="M 755 839 L 935 839 z" brokenType="1" contentEditable="inherit" id="line30" style="WIDTH: 100px; CURSOR: pointer; POSITION: absolute; HEIGHT: 100px; fill: none; stroke: black; stroke-width: 1.7999999999999998;fill: none; stroke: black; stroke-width: 1.7999999999999998" marker-end="url(#arrow)" wBaseMode="module122" wIndex="4" xBaseMode="module120" xIndex="5" attr_prop_attri1="2" attr_prop_attri2="3" attr_prop_attri3="4" attr_prop_attri4="5"/><line strokeweight="1.35" strokecolor="black" d="m701 743 L 701 810 z" brokenType="1" contentEditable="inherit" id="line28" style="WIDTH: 100px; CURSOR: pointer; POSITION: absolute; HEIGHT: 100px; fill: none; stroke: black; stroke-width: 1.7999999999999998;fill: none; stroke: black; stroke-width: 1.7999999999999998" marker-end="url(#arrow)" wBaseMode="module120" wIndex="2" xBaseMode="module108" xIndex="7" attr_prop_attri1="2" attr_prop_attri2="3" attr_prop_attri3="4" attr_prop_attri4="5"/><line strokeweight="1.35" strokecolor="black" d="M 648 714 L 439 810 z" brokenType="1" contentEditable="inherit" id="line26" style="WIDTH: 100px; CURSOR: pointer; POSITION: absolute; HEIGHT: 100px; fill: none; stroke: black; stroke-width: 1.7999999999999998;fill: none; stroke: black; stroke-width: 1.7999999999999998" marker-end="url(#arrow)" wBaseMode="module112" wIndex="2" xBaseMode="module108" xIndex="4" attr_prop_attri1="2" attr_prop_attri2="3" attr_prop_attri3="4" attr_prop_attri4="5"/><line strokeweight="1.35" strokecolor="black" d="M 884 589 L 884 619,701 619,701 685" brokenType="2" contentEditable="inherit" id="line24" style="WIDTH: 100px; CURSOR: pointer; POSITION: absolute; HEIGHT: 100px; fill: none; stroke: black; stroke-width: 1.7999999999999998;fill: none; stroke: black; stroke-width: 1.7999999999999998" marker-end="url(#arrow)" wBaseMode="module108" wIndex="2" xBaseMode="module100" xIndex="7" attr_prop_attri1="2" attr_prop_attri2="3" attr_prop_attri3="4" attr_prop_attri4="5"/><line strokeweight="1.35" strokecolor="black" d="M 524 597 L 524 619,701 619,701 685" brokenType="2" contentEditable="inherit" id="line22" style="WIDTH: 100px; CURSOR: pointer; POSITION: absolute; HEIGHT: 100px; fill: none; stroke: black; stroke-width: 1.7999999999999998;fill: none; stroke: black; stroke-width: 1.7999999999999998" marker-end="url(#arrow)" wBaseMode="module108" wIndex="2" xBaseMode="module102" xIndex="7" attr_prop_attri1="2" attr_prop_attri2="3" attr_prop_attri3="4" attr_prop_attri4="5"/><line strokeweight="1.35" strokecolor="black" d="M 755 478 L 755 478,884 478,884 534 z" brokenType="2" contentEditable="inherit" id="line20" style="WIDTH: 100px; CURSOR: pointer; POSITION: absolute; HEIGHT: 100px; fill: none; stroke: black; stroke-width: 1.7999999999999998;fill: none; stroke: black; stroke-width: 1.7999999999999998" marker-end="url(#arrow)" wBaseMode="module100" wIndex="2" xBaseMode="module96" xIndex="5" attr_prop_attri1="2" attr_prop_attri2="3" attr_prop_attri3="4" attr_prop_attri4="5"/><line strokeweight="1.35" strokecolor="black" d="m701 388 L 701 449 z" brokenType="1" contentEditable="inherit" id="line16" style="WIDTH: 100px; CURSOR: pointer; POSITION: absolute; HEIGHT: 100px; fill: none; stroke: black; stroke-width: 1.7999999999999998;fill: none; stroke: black; stroke-width: 1.7999999999999998" marker-end="url(#arrow)" wBaseMode="module96" wIndex="2" xBaseMode="module84" xIndex="7" attr_prop_attri1="2" attr_prop_attri2="3" attr_prop_attri3="4" attr_prop_attri4="5"/></modes>';
+				graphUtils.loadTextXml(xmlText);
+			
+			});
+		
+	</script>
+
+</html>
