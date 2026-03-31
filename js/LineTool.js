@@ -579,13 +579,14 @@ LineTool.prototype = {
 		return smallPath = "M " + paths[0] + " " + paths[1] + " " + " L " + paths[2] + " " + paths[3] + "," + paths[4] + " " + paths[5] + "," + paths[6] + " " + paths[7];
 	},
 	
-	create : function (left, top, brokenType) {
-	
+	create : function (left, top, cr) {
+
 		var self = this,
 		idIndex = self.getNextIndex(),
-	
+		brokenType = cr || 1;
+
 		path = "M " + left + " " + top + " L " + (left + 100) + " " + top + " z";
-	
+
 		if (brokenType != 1) {
 			path = "M " + left + " " + top + " L " + (left + 100) + " " + (top + 60) + " z";
 			path = self.brokenPath(path, brokenType);

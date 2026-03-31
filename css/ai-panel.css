@@ -1,0 +1,485 @@
+/**
+ * AI流程图生成 - 面板样式
+ */
+
+/* AI对话框遮罩层 */
+.ai-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+/* AI对话框容器 */
+.ai-modal-dialog {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 配置对话框更宽一些 */
+.ai-config-dialog {
+    max-width: 700px;
+}
+
+/* AI对话框头部 */
+.ai-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 2px solid #667eea;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.ai-modal-title {
+    margin: 0;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.ai-modal-close {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+.ai-modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* AI对话框内容区 */
+.ai-modal-body {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+/* AI对话框底部按钮区 */
+.ai-modal-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* AI按钮样式 */
+.ai-btn {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.ai-btn-primary {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: #fff;
+    font-weight: 600;
+}
+
+.ai-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(245, 87, 108, 0.4);
+}
+
+.ai-btn-secondary {
+    background: #667eea;
+    color: #fff;
+}
+
+.ai-btn-secondary:hover {
+    background: #764ba2;
+}
+
+.ai-btn-cancel {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.ai-btn-cancel:hover {
+    background: #d0d0d0;
+}
+
+/* AI面板容器（对话框版本） */
+.ai-panel-container {
+    padding: 0;
+}
+
+/* AI面板标题 */
+.ai-header {
+    display: none;
+}
+
+.ai-title {
+    display: none;
+}
+
+/* AI区域样式 */
+.ai-section {
+    margin-bottom: 15px;
+}
+
+.ai-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* AI输入框 */
+.ai-input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    resize: vertical;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.ai-input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.ai-input::placeholder {
+    color: #999;
+}
+
+/* AI模型选择器 */
+.ai-select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 13px;
+    background: #fff;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.ai-select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* AI状态显示 */
+.ai-status {
+    margin-top: 15px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 5px;
+    font-size: 13px;
+    color: #666;
+    min-height: 20px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+}
+
+/* AI面板容器（旧版辅助区面板 - 保留兼容性） */
+.ai-panel {
+    position: relative;
+    z-index: 1000;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    pointer-events: auto;
+}
+
+/* 确保AI面板内的所有元素都可以交互 */
+.ai-panel * {
+    pointer-events: auto;
+}
+
+/* AI面板标题（旧版） */
+.ai-panel .ai-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    border-bottom: none;
+}
+
+.ai-panel .ai-header h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* 旧版输入框样式 */
+.ai-panel textarea#aiInput,
+.ai-panel #aiInput {
+    position: relative;
+    z-index: 1001;
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    resize: vertical;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    box-sizing: border-box;
+}
+
+.ai-panel textarea#aiInput:focus,
+.ai-panel #aiInput:focus {
+    outline: none;
+    border-color: #fff;
+    background: #fff;
+}
+
+.ai-panel textarea#aiInput::placeholder,
+.ai-panel #aiInput::placeholder {
+    color: #999;
+}
+
+/* 旧版模型选择器样式 */
+.ai-panel select#modelSelector,
+.ai-panel #modelSelector {
+    position: relative;
+    z-index: 1001;
+    width: 100%;
+    padding: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    font-size: 13px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.ai-panel select#modelSelector:focus,
+.ai-panel #modelSelector:focus {
+    outline: none;
+    border-color: #fff;
+    background: #fff;
+}
+
+/* 旧版配置按钮样式 */
+.ai-panel #aiSettingsBtn {
+    position: relative;
+    z-index: 1001;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.ai-panel #aiSettingsBtn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+/* 生成按钮 */
+.ai-generate-btn {
+    position: relative;
+    z-index: 1001;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(245, 87, 108, 0.3);
+}
+
+.ai-generate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(245, 87, 108, 0.4);
+}
+
+.ai-generate-btn:active {
+    transform: translateY(0);
+}
+
+.ai-generate-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* AI状态显示（旧版） */
+.ai-panel .ai-status {
+    margin-top: 10px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 5px;
+    font-size: 12px;
+    color: #666;
+    min-height: 20px;
+    text-align: center;
+    border: none;
+}
+
+/* 配置对话框样式 */
+.ai-config-container {
+    padding: 10px;
+}
+
+.config-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+}
+
+.config-section h3 {
+    margin: 0 0 12px 0;
+    color: #333;
+    font-size: 15px;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 8px;
+}
+
+.config-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.config-table td {
+    padding: 8px 5px;
+    vertical-align: middle;
+}
+
+.config-table td:first-child {
+    width: 100px;
+    text-align: right;
+    font-weight: 500;
+    color: #555;
+}
+
+.config-table input {
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.config-table input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.config-table input[type="password"] {
+    font-family: 'Courier New', monospace;
+}
+
+/* 增强的工具栏按钮 */
+.toolbar-ai-section {
+    display: inline-block;
+    margin-left: 20px;
+    padding-left: 20px;
+    border-left: 2px solid #ddd;
+}
+
+.toolbar-ai-btn {
+    padding: 6px 12px;
+    margin: 0 5px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.toolbar-ai-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(102, 126, 234, 0.4);
+}
+
+.toolbar-ai-btn:active {
+    transform: translateY(0);
+}
+
+/* AI生成的节点文本样式 */
+.ai-node-text {
+    font-size: 12px;
+    color: #333;
+    margin-top: 5px;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+/* 响应式调整 */
+@media (max-width: 1200px) {
+    .ai-panel {
+        padding: 12px;
+    }
+
+    #aiInput {
+        height: 100px;
+    }
+
+    .ai-header h3 {
+        font-size: 14px;
+    }
+}
+
+/* 加载动画 */
+@keyframes ai-loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.ai-loading-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: ai-loading 0.8s linear infinite;
+}

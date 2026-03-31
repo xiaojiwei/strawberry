@@ -1,0 +1,18 @@
+{
+  "name": "strawberry-ai-proxy",
+  "version": "1.0.0",
+  "description": "Strawberry AI 流程图系统的代理服务器，解决CORS问题",
+  "main": "proxy-server.js",
+  "scripts": {
+    "start": "node proxy-server.js",
+    "dev": "node proxy-server.js"
+  },
+  "keywords": ["proxy", "cors", "ai", "flowchart"],
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "node-fetch": "^2.6.7"
+  }
+}

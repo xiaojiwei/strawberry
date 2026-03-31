@@ -342,6 +342,8 @@ ModeTool.prototype = {
 			global.smallTool.drawMode(moduleDiv);
 		
 		});
+
+		return moduleDiv.id;
 	
 	},
 	
