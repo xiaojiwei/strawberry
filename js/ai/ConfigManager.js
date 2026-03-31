@@ -54,7 +54,7 @@ var ConfigManager = (function() {
 
             // MiniMax配置
             minimax: {
-                apiKey: 'sk-api-h-KWQ9KWojRp1_f3dqDs1SJgqAr6JbtMSm9A41SrMJj4LPHx00vzJMSWR44KziNi19zU9OOS47pTXHteLVThRzIFIJmMuby-IPL6NmE4-QafuMt3z57d9sI',
+                apiKey: '',
                 baseURL: 'https://api.minimaxi.com/anthropic',
                 model: 'MiniMax-M2.7',
                 enabled: true
